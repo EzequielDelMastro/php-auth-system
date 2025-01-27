@@ -5,7 +5,7 @@ sistema de autenticación, PHP, seguridad, registro de usuarios, recuperación d
 # Guía de Uso de la API
 
 
-Este documento detalla el uso de la API que permite gestionar usuarios y realizar operaciones de autenticación. Sigue las instrucciones a continuación para integrarla y utilizarla correctamente.
+Este documento detalla el uso de la API que permite gestionar usuarios y realizar operaciones de autenticación. Sigue las instrucciones para integrarla y utilizarla correctamente.
 
 ## Configuración Inicial
 
