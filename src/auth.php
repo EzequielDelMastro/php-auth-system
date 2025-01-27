@@ -164,7 +164,7 @@ function verifyOtp($otp, $user_id) {
 
     // Actualizar el token de acceso en la base de datos
     $updateStmt = $db->prepare("UPDATE users SET access_token = ?, token_expiration = ?, otp_code = NULL, otp_expiration = NULL WHERE id = ?");
-    $updateStmt->execute([$token, $expiration, $userId]);
+    $updateStmt->execute([$token, $expiration, $user_id]);
 
     jsonResponse(['message' => 'Autenticación exitosa', 'token' => $token, 'expires_at' => $expiration], 200);
 }
@@ -260,10 +260,7 @@ function requestPasswordReset($email, $token) {
 
 
 function resetPassword($token, $newPassword) {
-    // Validar token
-    if (!validateToken($token)) {
-        jsonResponse(['error' => 'Token inválido o no autorizado'], 401);
-    }
+    
 
     // Conexión a la base de datos
     $db = getConnection();
