@@ -3,6 +3,7 @@
   "description": "Sistema de autenticación PHP con registro, recuperación de contraseñas y verificación por correo.",
   "type": "library",
   "license": "MIT",
+  "version": "1.0.0",
   "authors": [
     {
       "name": "Ezequiel S. Del Mastro",
@@ -17,6 +18,6 @@
       "PampaCode\\Autenticacion\\": "src/"
     }
   },
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "prefer-stable": true
 }
