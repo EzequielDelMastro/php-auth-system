@@ -2,7 +2,7 @@
   "name": "pampacode/autenticacion-php",
   "description": "Sistema de autenticación PHP con registro, recuperación de contraseñas y verificación por correo.",
   "type": "library",
-  "license": "AGPL",
+  "license": "MIT",
   "authors": [
     {
       "name": "Ezequiel S. Del Mastro",
