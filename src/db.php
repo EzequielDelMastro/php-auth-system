@@ -2,10 +2,10 @@
 
 // Configuración de la base de datos
 $config = [
-    'host' => 'localhost', // Cambiar al host de tu servidor
-    'database' => 'c7316_suchina', // Cambiar por el nombre de tu base de datos
-    'user' => 'c7316_suchin', // Cambiar por el usuario de tu base de datos
-    'password' => 'Warnes871' // Cambiar por la contraseña del usuario
+    'host' => '', // Cambiar al host de tu servidor
+    'database' => '', // Cambiar por el nombre de tu base de datos
+    'user' => '', // Cambiar por el usuario de tu base de datos
+    'password' => '' // Cambiar por la contraseña del usuario
 ];
 
 
