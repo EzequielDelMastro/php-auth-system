@@ -183,6 +183,46 @@ Las respuestas de error tienen el siguiente formato:
 }
 ```
 
+# Registro con Google OAuth en PHP
+
+Este sistema permite a los usuarios registrarse utilizando su cuenta de Google mediante OAuth 2.0.
+
+## Configuración
+
+1. **Obtener credenciales de Google**  
+   - Ve a [Google Cloud Console](https://console.cloud.google.com/).
+   - Crea un nuevo proyecto o selecciona uno existente.
+   - Habilita la API de Google Identity Platform.
+   - Crea credenciales OAuth 2.0 y obtén tu `Client ID` y `Client Secret`.
+   - Configura el `redirect URI` en **Autorización OAuth 2.0** (ejemplo: `https://tudominio.com/google/register/index.php`).
+
+2. **Configurar las credenciales en el código**  
+   En el archivo `googlekeysregister.php`, agrega:
+
+   ```php
+   <?php
+   $client_id = "TU_CLIENT_ID";
+   $client_secret = "TU_CLIENT_SECRET";
+   $redirect_uri = "TU_REDIRECT_URI";
+   $token_url = "https://oauth2.googleapis.com/token";
+   ?> 
+
+ Iniciar el proceso de autenticación
+        El usuario es redirigido a Google para iniciar sesión.
+        Al autorizar la aplicación, se obtiene un código de autenticación.
+
+ Intercambio del código por un token de acceso
+        Se realiza una solicitud a Google para obtener un access_token.
+        Con este token, se obtiene la información del usuario (email, nombre, foto, etc.).
+
+ Registro en la base de datos
+        Se almacena el email, el ID de Google como contraseña encriptada, el estado de verificación y la foto de perfil.
+
+Modifica las credenciales en googlekeysregister.php.
+
+
+
+
 ## Notas Adicionales
 - Usa librerías como `Postman` o `cURL` para probar la API.
 - Implementa HTTPS en producción para garantizar la seguridad.
