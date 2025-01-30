@@ -11,22 +11,26 @@ Este documento detalla el uso de la API que permite gestionar usuarios y realiza
 
 ### Esquema Tabla BD
 
-CREATE TABLE `users` (
-    `id` INT(11) NOT NULL AUTO_INCREMENT,
-    `email` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-    `password` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-    `access_token` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-    `token_expiration` DATETIME DEFAULT NULL,
-    `created_at` TIMESTAMP NOT NULL DEFAULT current_timestamp(),
-    `reset_token` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-    `reset_token_expiration` DATETIME DEFAULT NULL,
-    `verification_token` VARCHAR(500) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-    `is_verified` TINYINT(4) DEFAULT NULL,
-    `otp_code` VARCHAR(6) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-    `otp_expiration` DATETIME DEFAULT NULL,
-    PRIMARY KEY (`id`),
-    UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+CREATE TABLE users (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+    password VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+    access_token VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+    token_expiration DATETIME DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    reset_token VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+    reset_token_expiration DATETIME DEFAULT NULL,
+    verification_token VARCHAR(500) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+    is_verified TINYINT(4) DEFAULT NULL,
+    otp_code VARCHAR(6) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+    otp_expiration DATETIME DEFAULT NULL,
+    provider VARCHAR(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+    provider_id VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+    picture_profile VARCHAR(500) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+    INDEX (email)
+);
+
+
 
 
 ### Entorno de Desarrollo
