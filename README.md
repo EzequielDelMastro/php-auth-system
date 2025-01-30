@@ -238,11 +238,15 @@ Este sistema permite a los usuarios iniciar sesión con su cuenta de Google medi
 
   
    
+   ```php
+   <?php
    $client_id = "TU_CLIENT_ID";
    $client_secret = "TU_CLIENT_SECRET";
    $redirect_uri = "TU_REDIRECT_URI";
    $token_url = "https://oauth2.googleapis.com/token";
-  
+   ?> 
+
+
 
 
 3. Iniciar el proceso de autenticación
