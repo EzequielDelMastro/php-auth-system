@@ -16,6 +16,10 @@ if (ENV === 'development') {
 header("Access-Control-Allow-Origin: *"); // Permitir solicitudes desde cualquier origen
 header("Access-Control-Allow-Headers: Authorization, Content-Type"); // Permitir el header Authorization
 
+
+
+
+
 // Incluir las funciones de autenticación desde el archivo auth.php
 include '../src/auth.php';
 
@@ -135,6 +139,22 @@ elseif ($route === 'verify-otp' && $method === 'POST') {
 }
 
 
+elseif ($route === 'callback' && $method === 'GET') {
+    // Verificar el correo electrónico con el token de verificación
+    $code = $_GET['code'] ?? null; // Obtener el code de la URL
+    
+
+    if (!$code ) {
+        jsonResponse(['error' => 'code son requeridos'], 400);
+    }
+
+    callback($code); // Llamar a la función para verificar el correo
+}
+
+
+
  else {
     jsonResponse(['error' => 'Ruta no encontrada'], 404);
 }
+
+

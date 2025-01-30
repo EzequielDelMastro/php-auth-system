@@ -1,6 +1,9 @@
 # PampaCode - 2025
 # Guía de Uso de la API
 
+# git clone https://github.com/EzequielDelMastro/php-auth-system.git
+
+
 Este documento detalla el uso de la API que permite gestionar usuarios y realizar operaciones de autenticación. Sigue las instrucciones a continuación para integrarla y utilizarla correctamente.
 
 ## Configuración Inicial
