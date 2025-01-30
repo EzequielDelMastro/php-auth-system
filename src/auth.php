@@ -307,3 +307,54 @@ function validateToken($token) {
 }
 
 
+function callback($code) {
+    $db = getConnection();
+
+if (isset($code)) {
+    $code = $code;
+
+    // Configuración
+    $client_id = "398422448371-tecdirisu3arsecb181vnc10lsg5081d.apps.googleusercontent.com";
+    $client_secret = "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";
+    $redirect_uri = "http://suchinmeli.com.ar/WS/public/?route=callback";
+    $token_url = "https://oauth2.googleapis.com/token";
+
+    // Datos para el POST
+    $post_data = [
+        "code" => $code,
+        "client_id" => $client_id,
+        "client_secret" => $client_secret,
+        "redirect_uri" => $redirect_uri,
+        "grant_type" => "authorization_code",
+    ];
+
+    // Hacer la solicitud cURL
+    $ch = curl_init($token_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post_data));
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    // Procesar la respuesta
+    $token_data = json_decode($response, true);
+
+    if (isset($token_data['access_token'])) {
+        $access_token = $token_data['access_token'];
+
+        // Obtener información del usuario
+        $user_info_url = "https://www.googleapis.com/oauth2/v1/userinfo?access_token=$access_token";
+        $user_info = file_get_contents($user_info_url);
+        $user_data = json_decode($user_info, true);
+
+        // Mostrar la información del usuario
+        echo "<pre>";
+        print_r($user_data);
+        echo "</pre>";
+    } else {
+        echo "Error obteniendo el token de acceso.";
+    }
+}
+
+
+}
