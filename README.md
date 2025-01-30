@@ -245,7 +245,7 @@ Este sistema permite a los usuarios iniciar sesión con su cuenta de Google medi
    $redirect_uri = "TU_REDIRECT_URI";
    $token_url = "https://oauth2.googleapis.com/token";
    ?> 
-
+```
 
 
 
