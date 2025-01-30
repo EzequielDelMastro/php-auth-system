@@ -220,7 +220,47 @@ Este sistema permite a los usuarios registrarse utilizando su cuenta de Google m
 
 Modifica las credenciales en googlekeysregister.php.
 
+# Inicio de Sesión con Google OAuth en PHP
 
+Este sistema permite a los usuarios iniciar sesión con su cuenta de Google mediante OAuth 2.0.
+
+## Configuración
+
+### 1. Obtener credenciales de Google  
+   - Accede a [Google Cloud Console](https://console.cloud.google.com/).
+   - Crea un nuevo proyecto o selecciona uno existente.
+   - Habilita la API de Google Identity Platform.
+   - Crea credenciales OAuth 2.0 y obtén tu `Client ID` y `Client Secret`.
+   - Configura el `redirect URI` en **Autorización OAuth 2.0** (ejemplo: `https://tudominio.com/google/login/auth/index.php`).
+
+### 2. Configurar las credenciales en el código  
+   En el archivo `googlekeyslogin.php`, agrega:
+
+  
+   <?php
+   $client_id = "TU_CLIENT_ID";
+   $client_secret = "TU_CLIENT_SECRET";
+   $redirect_uri = "TU_REDIRECT_URI";
+   $token_url = "https://oauth2.googleapis.com/token";
+   ?> 
+
+
+3. Iniciar el proceso de autenticación
+
+    El usuario es redirigido a Google para iniciar sesión.
+    Si el usuario autoriza la aplicación, Google devuelve un código de autorización.
+
+4. Intercambio del código por un token de acceso
+
+    Se realiza una solicitud a Google para obtener un access_token.
+    Con este token, se obtiene la información del usuario (email, ID, foto de perfil, etc.).
+
+5. Validación del usuario en la base de datos
+
+    Se busca el email del usuario en la base de datos.
+    Si el usuario no está registrado, se muestra un error.
+    Si el usuario está registrado pero no ha verificado su correo, se muestra un mensaje de verificación pendiente.
+    Si todo está correcto, se genera un token de sesión válido por 8 horas.
 
 
 ## Notas Adicionales
